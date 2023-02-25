@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <title>Calculator</title>
   <link href="./resources/css/styles.css" rel="stylesheet" type="text/css" />
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -19,28 +19,29 @@
   </header>
   <div id="main-content">
     <div id="calculator-grid">
-      <div class="button" id="screen-disp">1+1=2</div>
+      <div class="screen" id="screen-disp" maxLength="10">0</div>
       <div class="button" role="button" id="clear-btn">Clear</div>
       <div class="button" role="button" id="del-btn">Del</div>
-      <div class="button" role="button" id="exp-btn">^</div>
-      <div class="button" role="button" id="root-btn">√</div>
-      <div class="button" role="button" id="mod-btn">%</div>
-      <div class="button" role="button" id="divide-btn">/</div>
-      <div class="button" role="button" id="one-btn">1</div>
-      <div class="button" role="button" id="two-btn">2</div>
-      <div class="button" role="button" id="three-btn">3</div>
-      <div class="button" role="button" id="multi-btn">*</div>
-      <div class="button" role="button" id="four-btn">4</div>
-      <div class="button" role="button" id="five-btn">5</div>
-      <div class="button" role="button" id="six-btn">6</div>
-      <div class="button" role="button" id="minus-btn">-</div>
-      <div class="button" role="button" id="seven-btn">7</div>
-      <div class="button" role="button" id="eight-btn">8</div>
-      <div class="button" role="button" id="nine-btn">9</div>
-      <div class="button" role="button" id="zero-btn">00</div>
-      <div class="button" role="button" id="dot-btn">.</div>
+      <div class="button operate" role="button" id="exp-btn">^</div>
+      <div class="button operate" role="button" id="root-btn">√</div>
+      <div class="button operate" role="button" id="convert-btn">+-</div>
+      <div class="button operate" role="button" id="divide-btn">/</div>
+      <div class="button number" role="button">1</div>
+      <div class="button number" role="button">2</div>
+      <div class="button number" role="button">3</div>
+      <div class="button operate" role="button" id="multi-btn">*</div>
+      <div class="button number" role="button">4</div>
+      <div class="button number" role="button">5</div>
+      <div class="button number" role="button">6</div>
+      <div class="button operate" role="button" id="minus-btn">-</div>
+      <div class="button number" role="button">7</div>
+      <div class="button number" role="button">8</div>
+      <div class="button number" role="button">9</div>
+      <div class="button number" role="button">0</div>
+      <div class="button number" role="button">.</div>
       <div class="button" role="button" id="equal-btn">=</div>
-      <div class="button" role="button" id="plus-btn">+</div>
+      <div class="button operate" role="button" id="plus-btn">+</div>
+    </div>
     </div>
   </div>
 </body>
