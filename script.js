@@ -1,5 +1,5 @@
 
-/* BUTTONS */
+/* Buttons */
 const clearBtn = document.querySelector('#clear-btn');
 const delBtn = document.getElementById('del-btn');
 const convertBtn = document.getElementById('convert-btn');
@@ -11,7 +11,8 @@ const operatorBtns = document.querySelectorAll('.operate');
 /* Calculator Object */
 class Calculator {
     constructor() {
-        this.display = document.getElementById('screen-disp');
+        this.display = document.getElementById('current-display');
+        this.histDisplay = document.getElementById('hist-display');
         this.currentNumber = '0';
         this.operator = null;
         this.num1 = null;
@@ -19,17 +20,25 @@ class Calculator {
     }
 
     appendNumber(number){
-
+        if (this.currentNumber.length >= 10){
+            return;
+        }
         if(this.currentNumber === '0'){
             this.currentNumber = number.toString();
         } else {
             this.currentNumber += number.toString();
         }
-        this.display.innerText = this.currentNumber;
+        const MAX_DISPLAY_LENGTH = 9;
+        if(this.currentNumber.length > MAX_DISPLAY_LENGTH) {
+            this.display.innerText = parseFloat(this.currentNumber).toExponential(MAX_DISPLAY_LENGTH - 2);
+        } else {
+            this.display.innerText = this.currentNumber;
+        }
         if(this.operator === null){
             this.num1 = parseFloat(this.currentNumber);
         } else {
             this.num2 = parseFloat(this.currentNumber);
+            this.histDisplay.innerText = this.num1.toString() + this.operator + this.num2.toString();
         }
     }
 
@@ -38,6 +47,7 @@ class Calculator {
             this.num1 = parseFloat(this.currentNumber);
         }
         this.operator = operation;
+        this.histDisplay.innerText = this.num1.toString() + operation;
         this.currentNumber = '0';
     }
 
@@ -46,6 +56,7 @@ class Calculator {
         this.operator = null;
         this.num1 = null;
         this.num2 = null;
+        this.histDisplay.innerText = '';
         this.display.innerText = this.currentNumber;
     }
 
@@ -110,11 +121,20 @@ class Calculator {
             default:
                 return;
         }
-        this.display.innerText = result;
+        if(result.toString().length > 10){
+            this.display.innerText = result.toExponential(4);
+        } else {
+            this.display.innerText = result;
+        }
         this.num1 = result;
-        this.num2 = null;
-        this.operator = null;
-        this.currentNumber = '0';
+        if(this.num2 != null){
+            this.histDisplay.innerText = this.operator + this.num2.toString();
+        } else {
+            this.histDisplay.innerText = this.operator;
+        }
+        //this.num2 = null;
+        //this.operator = null;
+        //this.currentNumber = '0';
     }
 }
 
@@ -138,12 +158,3 @@ equalsBtn.addEventListener('click', () =>  myCalc.calculate() );
 clearBtn.addEventListener('click', () => myCalc.clear() );
 delBtn.addEventListener('click', () => myCalc.delete() );
 convertBtn.addEventListener('click', () => myCalc.convert() );
-
-/*displayScreen.addEventListener('input', (event) => {
-    console.log('over the limit, baby');
-    const maxLength = parseInt(displayScreen.getAttribute('maxlength'));
-    const currentValue = displayScreen.innerText;
-    if(currentValue.length > maxLength) {
-        displayScreen.innerText = Math.E.toFixed(3);
-    }
-})*/
