@@ -49,6 +49,8 @@ class Calculator {
         this.operator = operation;
         this.histDisplay.innerText = this.num1.toString() + operation;
         this.currentNumber = '0';
+        //console.log(`current number is: ${this.currentNumber}, num1 is ${this.num1} and num2 is ${this.num2}, op is ${this.operator}`)
+
     }
 
     clear() {
@@ -71,7 +73,6 @@ class Calculator {
             this.currentNumber = this.num2;
             this.display.innerText = this.currentNumber;
         }
-        //console.log(`current number is: ${this.currentNumber}, num1 is ${this.num1} and num2 is ${this.num2}`)
     }
 
     exponentiantion(a,b) {
@@ -146,7 +147,7 @@ myCalc = new Calculator();
 numberBtns.forEach(button => {
     button.addEventListener('click', () => {
         myCalc.appendNumber(button.innerText);
-    })
+    });
 });
 
 operatorBtns.forEach(operator => {
@@ -159,3 +160,22 @@ equalsBtn.addEventListener('click', () =>  myCalc.calculate() );
 clearBtn.addEventListener('click', () => myCalc.clear() );
 delBtn.addEventListener('click', () => myCalc.delete() );
 convertBtn.addEventListener('click', () => myCalc.convert() );
+
+/* Setting the Keys */
+document.addEventListener('keydown', function(event) {
+    if (Number.isInteger(parseInt(event.key))) {
+        numberBtns.forEach(button => {
+            if (event.key === button.innerText){
+                myCalc.appendNumber(event.key);
+            }
+        })
+    } else if (event.key === 'Enter') {
+        myCalc.calculate();
+    } else {
+        operatorBtns.forEach(operator => {
+            if (event.key === operator.innerText) {
+                myCalc.setOperator(event.key);
+            }
+        })
+    }
+})
