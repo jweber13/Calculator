@@ -61,6 +61,7 @@ class Calculator {
     }
 
     convert() {
+        console.log(`current number is: ${this.currentNumber}, num1 is ${this.num1} and num2 is ${this.num2}`)
         if(this.num2 === null){
             this.num1 *= -1;
             this.currentNumber = this.num1;
@@ -126,15 +127,15 @@ class Calculator {
         } else {
             this.display.innerText = result;
         }
-        this.num1 = result;
         if(this.num2 != null){
-            this.histDisplay.innerText = this.operator + this.num2.toString();
+            this.histDisplay.innerText = this.num1.toString() + this.operator + this.num2.toString() + "=";
         } else {
             this.histDisplay.innerText = this.operator;
         }
-        //this.num2 = null;
-        //this.operator = null;
-        //this.currentNumber = '0';
+        this.num1 = result;
+        this.num2 = null;
+        this.operator = null;
+        this.currentNumber = '0';
     }
 }
 
