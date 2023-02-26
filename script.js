@@ -1,5 +1,3 @@
-/* SCREEN DISP 
-const displayScreen = document.getElementById('screen-disp');*/
 
 /* BUTTONS */
 const clearBtn = document.querySelector('#clear-btn');
@@ -21,19 +19,16 @@ class Calculator {
     }
 
     appendNumber(number){
+
         if(this.currentNumber === '0'){
             this.currentNumber = number.toString();
         } else {
             this.currentNumber += number.toString();
         }
-        //if(this.display.innerText.length > 10){
-        //    this.currentNumber = Math.exp(parseFloat(this.currentNumber)).toString();
-        //}
         this.display.innerText = this.currentNumber;
         if(this.operator === null){
             this.num1 = parseFloat(this.currentNumber);
         } else {
-            //this.display.innerText = this.operator + this.currentNumber;
             this.num2 = parseFloat(this.currentNumber);
         }
     }
@@ -65,6 +60,14 @@ class Calculator {
             this.display.innerText = this.currentNumber;
         }
         //console.log(`current number is: ${this.currentNumber}, num1 is ${this.num1} and num2 is ${this.num2}`)
+    }
+
+    exponentiantion(a,b) {
+        let res = 1;
+        for(let i=0;i<b;i++) {
+            res *= a;
+        }
+        return res;
     }
 
     delete() {
@@ -99,7 +102,7 @@ class Calculator {
                 result = this.num1 / this.num2;
                 break;
             case '^':
-                result = this.num1;
+                result = this.exponentiantion(this.num1, this.num2);
                 break;
             case '√':
                 result = Math.sqrt(this.num1);
