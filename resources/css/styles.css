@@ -6,27 +6,43 @@
   }
 
 /*setting colors*/
+:root {
+  --back-color1: #6686D1;
+  --back-color2: #66BBD1;
+  --back-color3: #66D1B1;
+  --back-color4: #FFFFFF;
+  --back-color5: #D17C66;
+  --back-color6: #3FAAC5;
+
+  --synth-color1: #463191;
+  --synth-color2: #E72696;
+  --synth-color3: #FACF31;
+  --synth-color4: #F99B1D;
+  --synth-color5: #5EDBA5;
+  --synth-color6: #F222FF;
+  
+}
   
   html {
     height: 100%;
     width: 100%;
-    font-family: 'Fira Code', monospace;
+    font-family: 'Share Tech', sans-serif;
     font-size: 18px;
   }
   
   body {
     overflow: hidden;
-    background-color: #6686D1;
+    background-image: linear-gradient(var(--synth-color6), var(--synth-color1));
   }
   
   header {
     text-align: center;
-    background-color: #66BBD1;
-    border-bottom: 1px #66D1B1 solid;
+    background-color: var(--synth-color1);
+    border-bottom: 1px var(--synth-color3) solid;
   }
   
   header h1{
-    color: #FFFFFF;
+    color: var(--synth-color3);
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
   
@@ -44,7 +60,7 @@
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(7, 1fr);
-    background-color: #D17C66;
+    background-image: linear-gradient(var(--synth-color2), var(--synth-color3));
     border: 2px black solid;
     border-radius: 15px;
     box-shadow: 5px 5px 5px black;
@@ -56,46 +72,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #66BBD1;
-    color: #FFFFFF;
+    background-color: var(--synth-color1);
+    color: var(--synth-color5);
     text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
     border: 1px black solid;
     border-bottom: 3px black solid;
   }
   
   .button:not(#screen-disp):hover {
-    background-color: #3FAAC5;
+    background-color: var(--synth-color6);
     cursor: pointer;
   }
   
   .button:not(#screen-disp):active {
-    background-color: #3FAAC5;
+    background-color: var(--synth-color6);
     transform: translateY(1px);
     border-bottom: 1px black solid;
   }
-  /*
-  #screen-disp {
-    font-family: 'Orbitron', sans-serif;
-    text-align: right;
-    justify-content: end;
-    padding: 1rem;
-    padding-top: 1.5rem;
-    font-size: 2rem;
-    text-shadow: none;
-    font-weight: lighter;
-    background-color: #C0C0C0;
-    color: black;
-    border-bottom: 1px black solid;
-    border: 2px black solid;
-    grid-row: 1 / span 2;
-    grid-column: 1 / span 4;
-
-    vertical-align: bottom;
-    text-align: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  */
 
   .screen {
     font-family: 'Orbitron', sans-serif;
@@ -104,7 +97,7 @@
     flex-direction: column;
     align-items: flex-end;
     padding: 1rem;
-    background-color: #C0C0C0;
+    background-color: var(--synth-color3);
     color: black;
     border-bottom: 1px black solid;
     border: 2px black solid;
